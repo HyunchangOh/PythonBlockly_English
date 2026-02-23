@@ -194,7 +194,7 @@
         console.log('Change! Better save:', event)
     });
 
-    editor.setCode('kundenbewertungen = [5, 4, 3, 5, 2, 4, 5, 3, 4, 5]# Berechnen Sie die durchschnittliche Bewertung eines Produkts\n\ngesamtbewertungen = sum(kundenbewertungen)  # Summieren Sie alle Bewertungen\nanzahl_bewertungen = len(kundenbewertungen)  # Ermitteln Sie die Anzahl der Bewertungen\ndurchschnittsbewertung = gesamtbewertungen / anzahl_bewertungen  # Durchschnitt berechnen\nprint("Die durchschnittliche Kundenbewertung fuer dieses Produkt ist: " + str(durchschnittsbewertung))');
+    editor.setCode('customer_ratings = [5, 4, 3, 5, 2, 4, 5, 3, 4, 5]# Calculate the average rating of a product\n\ntotal_ratings = sum(customer_ratings)  # Sum all ratings\nrating_count = len(customer_ratings)  # Get the number of ratings\naverage_rating = total_ratings / rating_count  # Calculate average\nprint("The average customer rating for this product is: " + str(average_rating))');
     // editor.setCode('print("Die Frage ist nicht, ob Maschinen denken, sondern ob Menschen es tun.")\n')
 
     Sk.configure({

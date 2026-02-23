@@ -195,7 +195,7 @@
     });
 
 
-    editor.setCode('# Liste von Kundenfeedback\n\nfeedback_liste = [\n\t"gutes produkt, aber die lieferung war verspaetet",\n\t"grossartiger kundenservice",\n\t"nicht zufrieden mit der qualitaet",\n\t"gutes preis-leistungs-verhaeltnis",\n\t"lieferung war schnell und einfach"\n]\n\n# zaehlen der feedback-kommentare, die "schlecht" erwaehnen\nnegative_anzahl = 0\nfor feedback in feedback_liste:\n\tif "schlecht" in feedback:\n\t\tnegative_anzahl += 1\n\nprint("Anzahl der negativen Feedback-Kommentare: + str(negative_anzahl))')
+    editor.setCode('# List of customer feedback\n\nfeedback_list = [\n\t"good product, but the delivery was delayed",\n\t"great customer service",\n\t"not satisfied with the quality",\n\t"good price-performance ratio",\n\t"delivery was fast and easy"\n]\n\n# count the feedback comments that mention "bad"\nnegative_count = 0\nfor feedback in feedback_list:\n\tif "bad" in feedback:\n\t\tnegative_count += 1\n\nprint("Number of negative feedback comments: " + str(negative_count))')
     // editor.setCode('# Liste von Kundenfeedback\nfeedback_liste = [\n\t"Gutes Produkt aber die Lieferung war verspaetet",\n\t"Grossartiger Kundenservice",\n\t"Nicht zufrieden mit der Qualitaet",\n\t"Gutes Preis-Leistungs-Verhaeltnis",\n\t"Lieferung war schnell und einfach"\n]\n\n# Zaehlen wie viele Feedback-Kommentare "Grossartig" erwaehnen\ngrossartig_anzahl = 0\nfor feedback in feedback_liste:\n\tif "Grossartig" in feedback:\n\t\tgrossartig_anzahl += 1\nprint("Anzahl der Feedbacks Grossartig erwaehnen:", grossartig_anzahl)');
     // editor.setCode('print("Die Frage ist nicht, ob Maschinen denken, sondern ob Menschen es tun.")\n')
 
