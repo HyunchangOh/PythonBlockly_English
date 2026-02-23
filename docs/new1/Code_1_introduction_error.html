@@ -194,7 +194,7 @@
         console.log('Change! Better save:', event)
     });
 
-    editor.setCode('print("vor dem Fehler(wird ausgegeben)")\npriint("Fehler, weil priint statt print(wird nicht ausgegeben)")\nprint("nach dem Fehler(wird nicht ausgegeben)")');
+    editor.setCode('print("before the error (will be output)")\npriint("Error, because priint instead of print (will not be output)")\nprint("after the error (will not be output)")');
     // editor.setCode('print("Die Frage ist nicht, ob Maschinen denken, sondern ob Menschen es tun.")\n')
 
     Sk.configure({
@@ -273,7 +273,7 @@
     const container = document.querySelector('.js-container');
     runCode();
     var a = $("#output").text();
-    if(a=="vor dem Fehler(wird ausgegeben)NameError: name 'priint' is not defined on line 2"){
+    if(a=="before the error (will be output)NameError: name 'priint' is not defined on line 2"){
         new Confettiful(container);
         showCorrectMessage();
     }

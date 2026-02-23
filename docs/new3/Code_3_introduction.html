@@ -194,7 +194,7 @@
         console.log('Change! Better save:', event)
     });
 
-    editor.setCode('pH_wert = 7.2\n\nif pH_wert == 7:\n\twasserqualitaet = "neutral"\nelif pH_wert < 7:\n\twasserqualitaet = "sauer"\nelse:\n\twasserqualitaet = "alkalisch"\n\nprint("Das Wasser ist: " + str(wasserqualitaet))');
+    editor.setCode('pH_value = 7.2\n\nif pH_value == 7:\n\twater_quality = "neutral"\nelif pH_value < 7:\n\twater_quality = "acidic"\nelse:\n\twater_quality = "alkaline"\n\nprint("The water is: " + str(water_quality))');
     // editor.setCode('print("Die Frage ist nicht, ob Maschinen denken, sondern ob Menschen es tun.")\n')
 
     Sk.configure({
@@ -273,7 +273,7 @@
     const container = document.querySelector('.js-container');
     runCode();
     var a = $("#output").text();
-    if(a=="Das Wasser ist: alkalisch"){
+    if(a=="The water is: alkaline"){
         new Confettiful(container);
         showCorrectMessage();
     }

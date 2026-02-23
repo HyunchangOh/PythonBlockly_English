@@ -194,7 +194,7 @@
         console.log('Change! Better save:', event)
     });
 
-    editor.setCode('# Define initial amount, interest rate and number of years\nkapital = 10000    # Initial amount in euros\nzins = 0.05       # 5% interest rate\njahre = 10        # Duration in years\n\nprint("The initial investment is: " + str(kapital))\n\n# Calculate simple interest over time\nfor jahr in range(1, jahre + 1):\n\t# Formula for simple interest is kapital * (1 + zins * jahr)\n\teinfacher_zins_betrag = kapital * (1 + zins * jahr)\n\tformatierte_nachricht = "After year " + str(jahr) + " the investment is worth: " + str(einfacher_zins_betrag)\n\tprint(formatierte_nachricht)\n\n# Output: Shows the balance at the end of each year');
+    editor.setCode('# Define initial amount, interest rate and number of years\nprincipal = 10000    # Initial amount in euros\ninterest_rate = 0.05       # 5% interest rate\nyears = 10        # Duration in years\n\nprint("The initial investment is: " + str(principal))\n\n# Calculate simple interest over time\nfor year in range(1, years + 1):\n\t# Formula for simple interest is principal * (1 + interest_rate * year)\n\tsimple_interest_amount = principal * (1 + interest_rate * year)\n\tformatted_message = "After year " + str(year) + " the investment is worth: " + str(simple_interest_amount)\n\tprint(formatted_message)\n\n# Output: Shows the balance at the end of each year');
     // editor.setCode('print("Die Frage ist nicht, ob Maschinen denken, sondern ob Menschen es tun.")\n')
 
     Sk.configure({
