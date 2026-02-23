@@ -1,0 +1,180 @@
+<div style="width: 85%; margin: auto;">
+
+    <h1 style="color: #574092;">Data Types and Operations</h1>
+
+    <br>
+
+    <div>
+
+        <div><span>Now that we can print out the results in a way that we want, it is time to do some calculations. Well, computers are built to compute at the first place, so it would be logical for us to head next to basic operations.</span></div>
+        <div><span><br></span></div>
+        <div>Similarly in math, calculations in programming are done with <strong>variables</strong>&nbsp;and <strong>operators, </strong>where variables are used to store <strong>data</strong>&nbsp;and operators define a certain manipulation of the data. Observe the following example.</div>
+        <div><br></div>
+        <div>a = 2</div>
+        <div>b = 3</div>
+        <div>s = a + b</div>
+        <div><span><br></span></div>
+        <div><span>In above code, <strong>a, b, s </strong>are<span> </span><span>variables.</span><strong> </strong>In Python, values are stored in variables by using the '<span><strong>='&nbsp;</strong>operator.&nbsp;</span><strong>&nbsp;'+' </strong>is another operator, which in above case, yields the sum of the two integers 2 and 3, which is subsequently stored in the variable 's' by the '=' operator. In the end, 's' will have the value of 5.</span></div>
+        <div><span><br></span></div>
+        <div>Let us explore more in depth by observing a seemingly complex code.</div>
+    </div>
+
+    <div><br></div>
+
+    <br>
+
+    <details style="margin-bottom: 10px; padding: 10px; box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);" open="">
+
+        <summary style="color: #574092;">Guess what will happen</summary>
+
+        <div style="padding-top: 20px;">
+
+            <p><img src="https://moodle.mi.fu-berlin.de/moodle/draftfile.php/59567/user/draft/95116376/image%20%281%29.png" alt="" role="presentation" class="img-fluid"><br></p>
+
+            <p><iframe src="https://enkisprojekt.github.io/PythonBlockly/docs/chapter2/2_1_predict_question.html" width="100%" height="200" style="border: none; width: 100%; height: 268px;"></iframe></p>
+
+        </div>
+
+    </details>
+
+    <details style="margin-bottom: 10px; padding: 10px; box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);" open="">
+
+        <summary style="color: #574092;">Run an Example Code</summary>
+
+        <div style="padding-top: 20px;">
+
+            <p>The picture you have seen above is a screenshot of a functioning code, here is the code again:</p>
+            <p>x=5/2</p>
+            <p>y="Hello"+"World"</p>
+            <p>print(x*y)</p>
+            <p><strong>x</strong> and <strong>y</strong>&nbsp;are the&nbsp;<strong>variables</strong>&nbsp;in the code and are used to store a real number (5/2) and a text ("Hello World") respectively.&nbsp;</p>
+            <p><strong>"Hello", "World", 5, </strong>and<strong> 2 </strong>are called <strong>data, </strong>which have different <strong>data types.</strong>&nbsp;</p>
+            <p><strong>/, +, *</strong>&nbsp; are the&nbsp;<strong>operators</strong>&nbsp;in the code. Note that they function somewhat differently depending on <strong>data types</strong>.&nbsp;</p>
+            <p>Let us first run the code to see the results, which will be analyzed in the next section.</p>
+            <p><br></p>
+
+            <p><iframe src="https://enkisprojekt.github.io/PythonBlockly/docs/chapter2/2_2_run_code.html" width="100%" height="400" style="border: none; width: 100%; height: 270px;"></iframe></p>
+
+        </div>
+
+    </details>
+
+    <details style="margin-bottom: 10px; padding: 10px; box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);" open="">
+
+        <summary style="color: #574092;">Investigate the Code</summary>
+
+        <div style="padding-top: 20px;">
+
+            <p>Let us investigate the code step by step in order to exactly understand what happened.&nbsp;</p>
+            <p>First, try to solve the questions below by writing simpler codes and printing out the intermediate results.</p>
+
+            <p><iframe src="https://enkisprojekt.github.io/PythonBlockly/docs/chapter2/2_3_investigate_code.html" width="100%" height="400" style="border: none; width: 100%; height: 270px;"></iframe></p>
+            <p><iframe src="https://enkisprojekt.github.io/PythonBlockly/docs/chapter2/2_3_investigate_question.html" width="100%" height="400" style="border: none; width: 100%; height: 250px;"></iframe></p>
+            <p><span style="font-size: 0.9375rem;"><br></span></p>
+            <p><span style="font-size: 0.9375rem;">Notice
+                    how 5/2 and 5/2.0 gave different results?</span><br></p>
+
+            <p>This
+                is because 2 and 2.0 are treated differently in Python. Although both
+                intuitive, “+” in “Hello”+”World” and
+                1+2 are also treated differently.&nbsp;<span style="font-size: 0.9375rem;">This
+                    is because Python has different data types.</span></p>
+
+            <div>1.1 is an <strong>integer</strong> and
+                often marked with <strong>int</strong>.</div>
+
+            <div>2.“Hello” is a <strong>string
+                </strong>(text) and
+                often marked with <strong>str</strong>.</div>
+
+            <div>3.2.0 is a <strong>float </strong>(real number) and marked
+                with <strong>float</strong>. </div>
+        </div>
+        <div style="padding-top: 20px;">An integer divided by an integer will also yield an integer. If you wish to get a mathematically more precise result, you need to use floats.</div>
+        <div style="padding-top: 20px;">Strings can be added to each other to form a longer text, which is a process called <strong>concatenation.</strong>&nbsp;They can also be multiplied by an integer to repeat the string to yield a longer string, which is a process called <strong>scalar multiplication.</strong></div>
+        <div style="padding-top: 20px;"><span>You don't need to memorize how each operation functions for each combination of data types. The important thing is to understand that there are different data types and operations may function differently to different data types.</span></div>
+
+    </details>
+
+    <details style="margin-bottom: 10px; padding: 10px; box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);" open="">
+
+        <summary style="color: #574092;">Experiment with Small Changes</summary>
+
+        <div style="padding-top: 20px;">
+
+            Other than the ones we already explored, Python also supports more basic operators. Let us explore some of them by solving the questions below. You may try the code by yourself before answering them.</div>
+        <div style="padding-top: 20px;"><br>
+            <p><iframe src="https://enkisprojekt.github.io/PythonBlockly/docs/chapter2/2_0_try_me_code.html" width="100%" height="400" style="border: none; width: 100%; height: 270px;"></iframe></p>
+
+            <p><iframe src="https://enkisprojekt.github.io/PythonBlockly/docs/chapter2/2_4_modify_question.html" width="100%" height="200" style="border: none; width: 100%; height: 214px;"></iframe></p>
+
+
+
+        </div>
+
+    </details>
+
+    <details style="margin-bottom: 10px; padding: 10px; box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);" open="">
+
+        <summary style="color: #574092;">Solve a Complex Problem</summary>
+
+        <div style="padding-top: 20px;">
+
+            Now that we have seen how print works in Python, it is time to solve a complex assignment.</div>
+
+        <div style="padding-top: 20px;">
+
+            <p></p>
+            <p><strong>Scenario:</strong></p>
+
+            <p>There
+                are 1234 people in our department. </p>
+
+            <p>We have
+                to make groups of 23 people. For every group, we have to give them a room to
+                work, by printing out ‘Room’ for each group.</p>
+
+            <p></p>
+
+            <p>In
+                the end, there may be some people left out. To see how many are left out, you
+                have to print out the number of people left out in the format of “LeftOut=X”, where X is the number.</p>
+            <p><br></p>
+
+            <p></p>
+
+            <p><strong>Example:</strong></p>
+
+            <p>If
+                there are 5 groups formed and 3 people are left out, you have to print out the
+                following:</p>
+
+            <p>RoomRoomRoomRoomRoom</p>
+
+            <p>LeftOut=3</p><br>
+            <p></p><br>&nbsp;
+
+            <p><iframe src="https://enkisprojekt.github.io/PythonBlockly/docs/chapter2/2_5_make_code.html" width="100%" height="400" style="border: none; width: 100%; height: 270px;"></iframe></p>
+
+        </div>
+
+    </details>
+
+    <div><br></div>
+
+    <div>&nbsp;</div>
+
+    <div style="display: flex; width: 100%; text-align: center; padding: 15px; border: 2px dashed #f2b837; align-items: center; justify-content: center; background-color: white;"><span style="color: #f2b837; font-size: xx-large;"><strong>!</strong>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+
+        <div>
+
+            <p style="text-align: left;"><span style="font-size: 0.9375rem;"><br></span></p>
+
+            <p style="text-align: left;"><strong>Take Home Message</strong></p>
+            <p style="text-align: left;"><span>We learned that Python has different <strong>data types</strong>&nbsp;and <strong>operations,</strong>&nbsp;which may behave differently with different data types.</span></p>
+
+        </div>
+
+    </div>
+
+</div>

@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html>
+
+
+<head>
+    <meta charset="utf-8">
+    <title>Simple BlockMirror Example</title>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+            integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8="
+            crossorigin="anonymous"></script>
+
+    <!-- Blockly -->
+    <script src="../../lib/blockly/blockly_compressed.js" type="text/javascript"></script>
+    <script src="../../lib/blockly/blocks_compressed.js" type="text/javascript"></script>
+    <script src="../../lib/blockly/msg/js/en.js" type="text/javascript"></script>
+    <script src="../../lib/blockly/python_compressed.js" type="text/javascript"></script>
+    
+    <!-- CodeMirror -->
+    <link rel="stylesheet" href="../../lib/codemirror/codemirror.css">
+    <link rel="stylesheet" href="../../lib/codemirror/fullscreen.css">
+    <link rel="stylesheet" href="../../lib/codemirror/show-hint.css">
+    <script src="../../lib/codemirror/codemirror.js" type="text/javascript"></script>
+    <script src="../../lib/codemirror/show-hint.js" type="text/javascript"></script>
+    <script src="../../lib/codemirror/python-hint.js" type="text/javascript"></script>
+    <script src="../../lib/codemirror/fullscreen.js" type="text/javascript"></script>
+    <script src="../../lib/codemirror/python.js" type="text/javascript"></script>
+    <style>
+        .correct-message {
+          display: none;
+          position: fixed;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          background-color: rgba(0, 0, 0, 0.7);
+          color: #fff;
+          padding: 20px;
+          border-radius: 10px;
+          font-size: 24px;
+          text-align: center;
+          opacity: 1;
+          transition: opacity 2s ease-out;
+          z-index: 9999; /* Ensure it appears above other elements */
+        }
+      </style>
+    <!-- Skulpt -->
+    <script src="../../dist/skulpt_parser.js" type="text/javascript"></script>
+
+    <!-- BlockMirror -->
+    <link rel="stylesheet" href="../../dist/block_mirror.css">
+    <script src="../../dist/block_mirror.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="congrats.css">
+</head>
+
+
+<body>
+<div class="js-container container" style="top:0px !important;">
+    <div id="image-spot"></div>
+    <div style="width:80%; height:600px;margin:0 auto; left:10px; position:absolute"
+         id='example-frame'>
+    
+        <!-- <div class="btn-group" data-toggle="buttons" data-bind="visible: !assignment.upload()">
+            <label onclick="editor.setMode('block');">
+                <input type="radio" name="blockpy-mode-set" autocomplete="off"> Blocks
+            </label>
+            <label onclick="editor.setMode('split');">
+                <input type="radio" name="blockpy-mode-set" autocomplete="off" checked> Split
+            </label>
+            <label onclick="editor.setMode('text');">
+                <input type="radio" name="blockpy-mode-set" autocomplete="off"> Text
+            </label>
+        </div> -->
+
+    
+    
+        <div id="blockmirror-editor"></div>
+    </div>
+
+    <div class="output" style="position:absolute; height:600px;left:81%;padding: 20px; box-sizing: border-box; flex: 1; overflow: auto; background-color: #ffffff;">
+        <button id='mygo'>RUN</button>
+        <button id='submit'>SUBMIT</button>
+        <h2>Output</h2>
+        <pre id="output" style="white-space: pre-wrap; word-wrap: break-word;"></pre>
+    </div>
+    
+</div>
+<div id="correctMessage" class="correct-message">Correct!</div>
+</body>
+
+
+
+<!-- Remark: Core Function to Translate Python to Javascript -->
+<script src="https://cdn.jsdelivr.net/npm/skulpt@1.0.0/dist/skulpt.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/skulpt@1.0.0/dist/skulpt-stdlib.js"></script>
+
+<!-- Remark: Core Function to Run Code. Never Erase -->
+<script>
+    document.getElementById('mygo').addEventListener('click', function() {
+    // Get all elements with the class 'CodeMirror-line'
+    const codeLines = document.querySelectorAll('.CodeMirror-line');
+    
+    // Initialize an empty string to hold the combined text
+    let combinedText = '';
+
+    // Iterate through each 'CodeMirror-line' element and append its inner text to the combinedText
+    codeLines.forEach(line => {
+        combinedText += line.innerText + '\n';
+    });
+
+    runCode();
+});
+    function runCode() {
+        const outputElement = document.getElementById("output");
+        // const code = document.getElementById("code").value;
+        const codeLines = document.querySelectorAll('.CodeMirror-line');
+    
+        // Initialize an empty string to hold the combined text
+        let combinedText = '';
+
+        // Iterate through each 'CodeMirror-line' element and append its inner text to the combinedText
+        codeLines.forEach(line => {
+            if(line.innerText!='\u200B'){
+                console.log(line);
+                console.log(line.innerText);
+                combinedText += line.innerText + '\n';
+            }
+        });
+
+        const code = combinedText;
+        console.log(code);
+        outputElement.innerText = "";
+        // console.log(code);
+        Sk.configure({
+            output: function(text) {
+                outputElement.innerText += text;
+            },
+            read: function(x) {
+                if (Sk.builtinFiles === undefined || Sk.builtinFiles["files"][x] === undefined) {
+                    throw "File not found: '" + x + "'";
+                }
+                return Sk.builtinFiles["files"][x];
+            }
+        });
+
+        Sk.misceval.asyncToPromise(function() {
+            return Sk.importMainWithBody("<stdin>", false, code, true);
+        }).catch(function(err) {
+            outputElement.innerText += err.toString();
+        });
+    }
+
+    document.getElementById("code").addEventListener("keydown", function(e) {
+        if (e.key === "Tab") {
+            e.preventDefault();
+            const start = this.selectionStart;
+            const end = this.selectionEnd;
+
+            this.value = this.value.substring(0, start) + "    " + this.value.substring(end);
+
+            this.selectionStart = this.selectionEnd = start + 4;
+        }
+    });
+</script>
+
+<!-- Remark: Core Function to Display Editor. Never Erase -->
+<script type="text/javascript">
+    
+    var editor = new BlockMirror({
+        'container': document.getElementById('blockmirror-editor'),
+        blocklyMediaPath: '../../lib/blockly/media/',
+        imageMode: true,
+        imageDownloadHOok: (oldUrl) => {
+            return oldUrl;
+        },
+        imageUploadHook: (blob) => {
+            return Promise.resolve("Image("+JSON.stringify(URL.createObjectURL(blob))+")");
+        },
+        imageLiteralHook: (oldUrl) => {
+            return `Image("${oldUrl}")`;
+        },
+        //'height': '2000px'
+    });
+    editor.addChangeListener(function (event) {
+        console.log('Change! Better save:', event)
+    });
+
+    editor.setCode('')
+
+
+    Sk.configure({
+        __future__: Sk.python3,
+        read: function (filename) {
+            if (Sk.builtinFiles === undefined ||
+                Sk.builtinFiles["files"][filename] === undefined) {
+                throw "File not found: '" + filename + "'";
+            }
+            return Sk.builtinFiles["files"][filename];
+        }
+    });
+
+    $("#make-image").click(function() {
+        editor.blockEditor.getPngFromBlocks((u, i)=> $("#image-spot").html(i));
+    });
+
+    $('#go').click(function () {
+        runTests();
+    });
+
+</script>
+
+<!-- Remark: Display Celebration Message -->
+<script>
+    const Confettiful = function(el) {
+    this.el = el;
+    this.containerEl = null;
+    
+    this.confettiFrequency = 3;
+    this.confettiColors = ['#EF2964', '#00C09D', '#2D87B0', '#48485E','#EFFF1D'];
+    this.confettiAnimations = ['slow', 'medium', 'fast'];
+    
+    this._setupElements();
+    this._renderConfetti();
+  };
+  
+  Confettiful.prototype._setupElements = function() {
+    const containerEl = document.createElement('div');
+    const elPosition = this.el.style.position;
+    
+    if (elPosition !== 'relative' || elPosition !== 'absolute') {
+      this.el.style.position = 'relative';
+    }
+    
+    containerEl.classList.add('confetti-container');
+    
+    this.el.appendChild(containerEl);
+    
+    this.containerEl = containerEl;
+  };
+  
+  Confettiful.prototype._renderConfetti = function() {
+    this.confettiInterval = setInterval(() => {
+      const confettiEl = document.createElement('div');
+      const confettiSize = (Math.floor(Math.random() * 3) + 7) + 'px';
+      const confettiBackground = this.confettiColors[Math.floor(Math.random() * this.confettiColors.length)];
+      const confettiLeft = (Math.floor(Math.random() * this.el.offsetWidth)) + 'px';
+      const confettiAnimation = this.confettiAnimations[Math.floor(Math.random() * this.confettiAnimations.length)];
+      
+      confettiEl.classList.add('confetti', 'confetti--animation-' + confettiAnimation);
+      confettiEl.style.left = confettiLeft;
+      confettiEl.style.width = confettiSize;
+      confettiEl.style.height = confettiSize;
+      confettiEl.style.backgroundColor = confettiBackground;
+      
+      confettiEl.removeTimeout = setTimeout(function() {
+        confettiEl.parentNode.removeChild(confettiEl);
+      }, 3000);
+      
+      this.containerEl.appendChild(confettiEl);
+    }, 25);
+  };
+  
+  document.getElementById('submit').addEventListener('click', function() {
+    const container = document.querySelector('.js-container');
+    runCode();
+    var a = $("#output").text();
+    console.log(a);
+    var answer = 'Ich habe ein Buch gelesen, das "Die unendliche Geschichte" heißt.Der Autor hat gesagt, dass es wichtig ist, "an sich selbst zu glauben".Ich finde das Zitat \'Sei du selbst!\' sehr inspirierend.Manchmal denke ich, dass "alles möglich ist", wenn man hart arbeitet.';
+    console.log(answer);
+    if(a==answer){
+        new Confettiful(container);
+        showCorrectMessage();
+    }
+  });
+
+  function showCorrectMessage() {
+    const messageEl = document.getElementById('correctMessage');
+    messageEl.style.display = 'block';
+    messageEl.style.opacity = '1';
+    setTimeout(() => {
+      messageEl.style.opacity = '0';
+    }, 2000);
+    setTimeout(() => {
+      messageEl.style.display = 'none';
+    }, 4000);
+  }
+</script>
+
+
+<!-- Remark: Only Show Blocks that are Relevant -->
+<script>
+const itemsToRemove = ['Output','Values','Turtles', 'Dictionaries', 'Lists','Functions','Iteration','Calculation','Input','Decisions','Variables','Conversion'];  // List of items
+const itemsToRetain = ['Output','Values']
+
+document.querySelectorAll('span.blocklyTreeLabel').forEach(function(span) {
+    const content = span.innerHTML.trim();
+    if (!itemsToRetain.includes(content)&&itemsToRemove.includes(content)) {
+        span.parentElement.remove();  
+    }
+});
+
+</script>
+
+<!-- Remark: Only enable block mode -->
+<script>
+    editor.setMode('split');
+</script>
+</html>
