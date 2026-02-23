@@ -194,7 +194,7 @@
         console.log('Change! Better save:', event)
     });
 
-    editor.setCode("vogelbestandsdichte = 200\nif vogelbestandsdichte > 1000:\n\tprint('Sehr niedrige Prioritaet')\nelif vogelbestandsdichte > 300:\n\tprint('Niedrige Prioritaet')\nelif vogelbestandsdichte > 100:\n\tprint('Mittlere Prioritaet')\nif vogelbestandsdichte > 10:\n\tprint('Hohe Prioritaet')\nelse:\n\tprint('Kritisch - Notfallprioritaet')");
+    editor.setCode("bird_population_density = 200\nif bird_population_density > 1000:\n\tprint('Very low priority')\nelif bird_population_density > 300:\n\tprint('Low priority')\nelif bird_population_density > 100:\n\tprint('Medium priority')\nif bird_population_density > 10:\n\tprint('High priority')\nelse:\n\tprint('Critical - Emergency priority')");
     // editor.setCode('print("Die Frage ist nicht, ob Maschinen denken, sondern ob Menschen es tun.")\n')
 
     Sk.configure({
@@ -273,7 +273,7 @@
     const container = document.querySelector('.js-container');
     runCode();
     var a = $("#output").text();
-    if(a=="Mittlere Prioritaet"){
+    if(a=="Medium priority"){
         new Confettiful(container);
         showCorrectMessage();
     }

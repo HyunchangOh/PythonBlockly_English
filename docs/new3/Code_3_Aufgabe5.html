@@ -194,7 +194,7 @@
         console.log('Change! Better save:', event)
     });
 
-    editor.setCode('# Bestimmen, ob Naturschutzmassnahmen erforderlich sind\nif vogelbestandsdichte == "kritisch":\n\tprint("Naturschutzmassnahme erforderlich")\nelif vogelbestandsdichte == "hoch":\n\tprint("Naturschutzmassnahme nicht erforderlich")\nelif vogelbestandsdichte == "mittel":\n\tprint("")\nelif vogelbestandsdichte == "niedrig":\n\tprint("")\nelse:\n\tprint("")');
+    editor.setCode('# Determine if nature conservation measures are required\nif bird_population_density == "critical":\n\tprint("Nature conservation measure required")\nelif bird_population_density == "high":\n\tprint("Nature conservation measure not required")\nelif bird_population_density == "medium":\n\tprint("")\nelif bird_population_density == "low":\n\tprint("")\nelse:\n\tprint("")');
     // editor.setCode('print("Die Frage ist nicht, ob Maschinen denken, sondern ob Menschen es tun.")\n')
 
     Sk.configure({
@@ -272,33 +272,33 @@
   document.getElementById('submit').addEventListener('click', function() {
     const container = document.querySelector('.js-container');
     let flag = true;
-    runCode('vogelbestandsdichte = "kritisch" \nraeuberbestandsdichte = "hoch"\n');
+    runCode('bird_population_density = "critical" \npredator_population_density = "high"\n');
     var a = $("#output").text();
-    if(a!="Naturschutzmassnahme erforderlich"){
+    if(a!="Nature conservation measure required"){
         flag=false;
     }
 
-    runCode("vogelbestandsdichte = 'hoch'\n")
+    runCode("bird_population_density = 'high'\n")
     var a = $("#output").text();
-    if(a!="Naturschutzmassnahme nicht erforderlich"){
+    if(a!="Nature conservation measure not required"){
         flag=false;
     }
 
-    runCode("vogelbestandsdichte = 'mittel'\nraeuberbestandsdichte = 'hoch'\n")
+    runCode("bird_population_density = 'medium'\npredator_population_density = 'high'\n")
     var a = $("#output").text();
-    if(a!="Naturschutzmassnahme erforderlich"){
+    if(a!="Nature conservation measure required"){
         flag=false;
     }
 
-    runCode("vogelbestandsdichte = 'niedrig'\nraeuberbestandsdichte = 'mittel'\n")
+    runCode("bird_population_density = 'low'\npredator_population_density = 'medium'\n")
     var a = $("#output").text();
-    if(a!="Naturschutzmassnahme erforderlich"){
+    if(a!="Nature conservation measure required"){
         flag=false;
     }
 
-    runCode("vogelbestandsdichte = 'niedrig'\nraeuberbestandsdichte = 'niedrig'\n")
+    runCode("bird_population_density = 'low'\npredator_population_density = 'low'\n")
     var a = $("#output").text();
-    if(a!="Naturschutzmassnahme nicht erforderlich"){
+    if(a!="Nature conservation measure not required"){
         flag=false;
     }
 

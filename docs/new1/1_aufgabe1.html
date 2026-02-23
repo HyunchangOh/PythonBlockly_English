@@ -195,7 +195,7 @@
     });
 
     // editor.setCode('print("Wenn das Gehirn so einfach waere, dass wir es verstehen koennten, waeren wir so einfach, dass wir es nicht koennen.")\n')
-    editor.setCode('# Nutz bitte Blockly im oberen Bereich fuer diese Aufgabe. \n# Python Code wird hier automatisch geschrieben.\n\n\n')
+    editor.setCode('# Please use Blockly in the upper area for this task. \n# Python code will be automatically written here.\n\n\n')
 
     Sk.configure({
         __future__: Sk.python3,
@@ -273,7 +273,7 @@
     const container = document.querySelector('.js-container');
     runCode();
     var a = $("#output").text();
-    if(a=="Du kannst unendlich viele Versuche fuer jede Aktivitaet in diesem Kurs machen.Lass dich nie entmutigen.Es wird immer Hilfe direkt neben den Aktivitaeten verfuegbar sein."){
+    if(a=="You can make infinitely many attempts for each activity in this course.Never get discouraged.Help will always be available directly next to the activities."){
         new Confettiful(container);
         showCorrectMessage();
     }

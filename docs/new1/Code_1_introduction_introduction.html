@@ -194,7 +194,7 @@
         console.log('Change! Better save:', event)
     });
 
-    editor.setCode('print("Blockly und Python heissen Sie willkommen!")');
+    editor.setCode('print("Blockly and Python welcome you!")');
     // editor.setCode('print("Die Frage ist nicht, ob Maschinen denken, sondern ob Menschen es tun.")\n')
 
     Sk.configure({
@@ -273,7 +273,7 @@
     const container = document.querySelector('.js-container');
     runCode();
     var a = $("#output").text();
-    if(a=="Blockly und Python heissen Sie willkommen!"){
+    if(a=="Blockly and Python welcome you!"){
         new Confettiful(container);
         showCorrectMessage();
     }

@@ -194,7 +194,7 @@
         console.log('Change! Better save:', event)
     });
 
-    editor.setCode('# Nutz bitte Blockly im oberen Bereich fuer diese Aufgabe.\n# Python Code wird hier automatisch geschrieben.\n\n');
+    editor.setCode('# Please use Blockly in the upper area for this task.\n# Python code will be automatically written here.\n\n');
     // editor.setCode('print("Die Frage ist nicht, ob Maschinen denken, sondern ob Menschen es tun.")\n')
 
     Sk.configure({
@@ -273,7 +273,7 @@
     const container = document.querySelector('.js-container');
     runCode();
     var a = $("#output").text();
-    if(a=="Du kannst unendlich viele Versuche fuer jede Aktivitaet in diesem Kurs machen.Lass dich nie entmutigen.Es wird immer Hilfe direkt neben den Aktivitaeten verfuegbar sein."){
+    if(a=="You can make infinitely many attempts for each activity in this course.Never get discouraged.Help will always be available directly next to the activities."){
         new Confettiful(container);
         showCorrectMessage();
     }
