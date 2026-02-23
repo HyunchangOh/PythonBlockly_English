@@ -485,7 +485,7 @@ else:
     print("Skip")
 
 ```
-    if(a!=choice1){
+    if(a.replace(/\n/g, "")!=choice1.replace(/\n/g, "")){
         console.log("1");
         check = false;
     }
@@ -493,7 +493,7 @@ else:
     checkCode("balance=200\nprice=100\ncolor='orange'\n");
     var a = $("#output").text();
 
-    if(a!=choice1){
+    if(a.replace(/\n/g, "")!=choice1.replace(/\n/g, "")){
         console.log("2");
         check = false;
     }
@@ -501,7 +501,7 @@ else:
     checkCode("balance=200\nprice=100\ncolor='blue'\n");
     var a = $("#output").text();
 
-    if(a!=choice2){
+    if(a.replace(/\n/g, "")!=choice2.replace(/\n/g, "")){
         console.log("3");
         check = false;
     } 
@@ -509,7 +509,7 @@ else:
     checkCode("balance=199\nprice=100\ncolor='orange'\n");
     var a = $("#output").text();
 
-    if(a!=choice2){
+    if(a.replace(/\n/g, "")!=choice2.replace(/\n/g, "")){
         console.log("4");
         check = false;
     }

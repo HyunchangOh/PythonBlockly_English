@@ -275,31 +275,31 @@
     let flag = true;
     runCode("bird_population_density=1100\n");
     var a = $("#output").text();
-    if(a!="Very low priority"){
+    if(a.replace(/\n/g, "")!="Very low priority".replace(/\n/g, "")){
         flag=false;
     }
 
     runCode("bird_population_density=400\n")
     var a = $("#output").text();
-    if(a!="Low priority"){
+    if(a.replace(/\n/g, "")!="Low priority".replace(/\n/g, "")){
         flag=false;
     }
 
     runCode("bird_population_density=101\n")
     var a = $("#output").text();
-    if(a!="Medium PriorityRecommended budget for nature conservation measures: 15000 EUR"){
+    if(a.replace(/\n/g, "")!="Medium PriorityRecommended budget for nature conservation measures: 15000 EUR".replace(/\n/g, "")){
         flag=false;
     }
 
     runCode("bird_population_density=100\n")
     var a = $("#output").text();
-    if(a!="High PriorityRecommended budget for nature conservation measures: 40000 EUR"){
+    if(a.replace(/\n/g, "")!="High PriorityRecommended budget for nature conservation measures: 40000 EUR".replace(/\n/g, "")){
         flag=false;
     }
 
     runCode("bird_population_density=1\n")
     var a = $("#output").text();
-    if(a!="Critical - Emergency PriorityRecommended budget for nature conservation measures: 100000 EUR"){
+    if(a.replace(/\n/g, "")!="Critical - Emergency PriorityRecommended budget for nature conservation measures: 100000 EUR".replace(/\n/g, "")){
         flag=false;
     }
 

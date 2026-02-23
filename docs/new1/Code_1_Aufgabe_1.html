@@ -275,7 +275,7 @@
     runCode();
     var a = $("#output").text();
     const expectedAnswer = "You can make an infinite number of attempts for each activity in this course. Never get discouraged. There will always be help available right next to the activities.";
-    if(a==expectedAnswer){
+    if(a.replace(/\n/g, "")==expectedAnswer.replace(/\n/g, "")){
         new Confettiful(container);
         showCorrectMessage();
     }

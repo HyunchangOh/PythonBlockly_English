@@ -277,7 +277,7 @@
     runCode();
     var a = $("#output").text();
     const expectedAnswer = "Number of feedbacks that mention 'great': 1";
-    if(a==expectedAnswer){
+    if(a.replace(/\n/g, "")==expectedAnswer.replace(/\n/g, "")){
         new Confettiful(container);
         showCorrectMessage();
     }

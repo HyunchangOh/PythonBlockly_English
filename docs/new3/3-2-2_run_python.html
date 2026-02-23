@@ -284,28 +284,28 @@
 
 		checkCode("score=91\n");
 		var a = $("#output").text();
-		if(a!=choice1){
+		if(a.replace(/\n/g, "")!=choice1.replace(/\n/g, "")){
 			check=false;
 		}
 		console.log(a);
 
 		checkCode("score=90\n");
 		var a = $("#output").text();
-		if(a!=choice2){
+		if(a.replace(/\n/g, "")!=choice2.replace(/\n/g, "")){
 			check=false;
 		}
 		console.log(a);
 
 		checkCode("score=70\n");
 		var a = $("#output").text();
-		if(a!=choice3){
+		if(a.replace(/\n/g, "")!=choice3.replace(/\n/g, "")){
 			check=false;
 		}
 		console.log(a);
 
 		checkCode("score=50\n");
 		var a = $("#output").text();
-		if(a!=choice4){
+		if(a.replace(/\n/g, "")!=choice4.replace(/\n/g, "")){
 			check=false;
 		}
 		console.log(a);

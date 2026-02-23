@@ -275,7 +275,7 @@
     runCode();
     var a = $("#output").text();
     const expectedAnswer = "MikroGeringLeichtStarkSehr schwer";
-    if(a==expectedAnswer){
+    if(a.replace(/\n/g, "")==expectedAnswer.replace(/\n/g, "")){
         new Confettiful(container);
         showCorrectMessage();
     }

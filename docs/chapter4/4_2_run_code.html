@@ -432,7 +432,7 @@
     runCode();
     var a = $("#output").text();
     const expectedAnswer = "I see trees of greenRed roses, tooI see them bloomFor me and youFor me and youFor me and you";
-    if(a==expectedAnswer){
+    if(a.replace(/\n/g, "")==expectedAnswer.replace(/\n/g, "")){
         new Confettiful(container);
         showCorrectMessage();
     }

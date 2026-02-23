@@ -473,7 +473,7 @@
     checkCode("print(get_grade(80,60,60))\nprint(get_grade(100,40,100))\nprint(get_grade(49,50,100))\nprint(get_grade(50,50,100))\nprint(get_grade(90,80,90))\nprint(get_grade(80,80,80))\nprint(get_grade(60,60,60))\nprint(get_grade(60,80,69))");
     var a = $("#output").text();
     console.log("Hihi");
-    if(a!=choice1){
+    if(a.replace(/\n/g, "")!=choice1.replace(/\n/g, "")){
         check=false;
     }
     console.log("Hihi");

@@ -268,7 +268,7 @@
     var answer = 'I have read a book called "The Neverending Story".The author said that it is important to "believe in yourself".I find the quote \'Be yourself!\' very inspiring.Sometimes I think that "everything is possible" if you work hard.';
     console.log(answer);
     const expectedAnswer = answer;
-    if(a==expectedAnswer){
+    if(a.replace(/\n/g, "")==expectedAnswer.replace(/\n/g, "")){
         new Confettiful(container);
         showCorrectMessage();
     }

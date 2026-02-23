@@ -473,7 +473,7 @@
     checkCode("print(load_products([[10,100],[5,40],[2,30]],99))\nprint(load_products([[10,10],[8,70],[1,1]],123))\nprint(load_products([[15,200],[9,69],[2,12]],188))");
     var a = $("#output").text();
     console.log("Hihi");
-    if(a!=choice1){
+    if(a.replace(/\n/g, "")!=choice1.replace(/\n/g, "")){
         check=false;
     }
     console.log("Hihi");

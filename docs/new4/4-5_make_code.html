@@ -472,7 +472,7 @@
     checkCode("geheimzahl=12\n");
     var a = $("#output").text();
 
-    if(a!=choice1){
+    if(a.replace(/\n/g, "")!=choice1.replace(/\n/g, "")){
         console.log(a);
         check = false;
     }
