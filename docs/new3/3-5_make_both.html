@@ -412,6 +412,7 @@
 
 </div>
 <div id="correctMessage" class="correct-message">Correct, congratulations!</div>
+<div id="answerMessage" class="correct-message"></div>
 </body>
 <script>
     const Confettiful = function(el) {
@@ -504,6 +505,10 @@
     if(check){
         new Confettiful(container);
         showCorrectMessage();
+    }
+    else{
+        const expectedAnswers = "Test 1: " + choice1 + "\nTest 2: " + choice2 + "\nTest 3: " + choice3 + "\nTest 4: " + choice4;
+        showAnswerMessage(expectedAnswers);
     }
   });
 

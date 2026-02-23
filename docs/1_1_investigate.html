@@ -375,6 +375,7 @@
 
 </div>
 <div id="correctMessage" class="correct-message">Correct!</div>
+<div id="answerMessage" class="correct-message"></div>
 <div id="wrongMessage" class="correct-message">Make sure the program is printing out the required output: It's a wonderful world! And also that they are enclosed with quotation marks just like in the previous code example.</div>
 </body>
 <script>
@@ -431,12 +432,13 @@
     const container = document.querySelector('.js-container');
     runCode();
     var a = $("#output").text();
-    if(a=="It's a wonderful world!"){
+    const expectedAnswer = "It's a wonderful world!";
+    if(a==expectedAnswer){
         new Confettiful(container);
         showCorrectMessage();
     }
     else{
-        showWrongMessage();
+        showAnswerMessage(expectedAnswer);
     }
   });
 
@@ -449,7 +451,20 @@
     }, 2000);
     setTimeout(() => {
       messageEl.style.display = 'none';
-    }, 4000); // Total duration to allow fade out to complete
+    }, 3000);
+  }
+
+  function showAnswerMessage(expectedAnswer) {
+    const messageEl = document.getElementById('answerMessage');
+    messageEl.textContent = "Expected answer: " + expectedAnswer;
+    messageEl.style.display = 'block';
+    messageEl.style.opacity = '1';
+    setTimeout(() => {
+      messageEl.style.opacity = '0';
+    }, 2000);
+    setTimeout(() => {
+      messageEl.style.display = 'none';
+    }, 3000);
   }
 
   function showWrongMessage() {

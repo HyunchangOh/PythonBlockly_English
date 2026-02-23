@@ -412,6 +412,7 @@
 
 </div>
 <div id="correctMessage" class="correct-message">Correct!</div>
+<div id="answerMessage" class="correct-message"></div>
 </body>
 <script>
     const Confettiful = function(el) {
@@ -507,6 +508,10 @@
         new Confettiful(container);
         showCorrectMessage();
     }
+    else{
+        const expectedAnswers = "Test 1: " + choice1 + "\nTest 2: " + choice2 + "\nTest 3: " + choice3 + "\nTest 4: " + choice4;
+        showAnswerMessage(expectedAnswers);
+    }
   });
 
   function showCorrectMessage() {
@@ -518,7 +523,20 @@
     }, 2000);
     setTimeout(() => {
       messageEl.style.display = 'none';
-    }, 4000); // Total duration to allow fade out to complete
+    }, 3000);
+  }
+
+  function showAnswerMessage(expectedAnswer) {
+    const messageEl = document.getElementById('answerMessage');
+    messageEl.textContent = "Expected answers:\n" + expectedAnswer;
+    messageEl.style.display = 'block';
+    messageEl.style.opacity = '1';
+    setTimeout(() => {
+      messageEl.style.opacity = '0';
+    }, 2000);
+    setTimeout(() => {
+      messageEl.style.display = 'none';
+    }, 3000);
   }
 </script>
 </html>

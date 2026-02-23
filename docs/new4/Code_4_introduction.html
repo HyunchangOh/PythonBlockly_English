@@ -72,6 +72,7 @@
     
 </div>
 <div id="correctMessage" class="correct-message">Correct. Congratulations!</div>
+<div id="answerMessage" class="correct-message"></div>
 <script>
 	window.onload = () => {
 		let parentDiv = document.getElementById("blockmirror-editor");
@@ -273,9 +274,13 @@
     const container = document.querySelector('.js-container');
     runCode();
     var a = $("#output").text();
-    if(a=="The initial investment is: 10000After year 1 the investment is worth: 10500.0After year 2 the investment is worth: 11000.0After year 3 the investment is worth: 11500.0After year 4 the investment is worth: 12000.0After year 5 the investment is worth: 12500.0After year 6 the investment is worth: 13000.0After year 7 the investment is worth: 13500.0After year 8 the investment is worth: 14000.0After year 9 the investment is worth: 14500.0After year 10 the investment is worth: 15000.0"){
+    const expectedAnswer = "The initial investment is: 10000After year 1 the investment is worth: 10500.0After year 2 the investment is worth: 11000.0After year 3 the investment is worth: 11500.0After year 4 the investment is worth: 12000.0After year 5 the investment is worth: 12500.0After year 6 the investment is worth: 13000.0After year 7 the investment is worth: 13500.0After year 8 the investment is worth: 14000.0After year 9 the investment is worth: 14500.0After year 10 the investment is worth: 15000.0";
+    if(a==expectedAnswer){
         new Confettiful(container);
         showCorrectMessage();
+    }
+    else{
+        showAnswerMessage(expectedAnswer);
     }
   });
 
@@ -288,7 +293,20 @@
     }, 2000);
     setTimeout(() => {
       messageEl.style.display = 'none';
-    }, 4000);
+    }, 3000);
+  }
+
+  function showAnswerMessage(expectedAnswer) {
+    const messageEl = document.getElementById('answerMessage');
+    messageEl.textContent = "Expected answer: " + expectedAnswer;
+    messageEl.style.display = 'block';
+    messageEl.style.opacity = '1';
+    setTimeout(() => {
+      messageEl.style.opacity = '0';
+    }, 2000);
+    setTimeout(() => {
+      messageEl.style.display = 'none';
+    }, 3000);
   }
 </script>
 

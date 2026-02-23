@@ -85,6 +85,7 @@
     
 </div>
 <div id="correctMessage" class="correct-message">Correct. Congratulations!</div>
+<div id="answerMessage" class="correct-message"></div>
 </body>
 
 
@@ -263,9 +264,13 @@
     const container = document.querySelector('.js-container');
     runCode();
     var a = $("#output").text();
-    if(a=="XXXXXXXXX"){
+    const expectedAnswer = "XXXXXXXXX";
+    if(a==expectedAnswer){
         new Confettiful(container);
         showCorrectMessage();
+    }
+    else{
+        showAnswerMessage(expectedAnswer);
     }
   });
 
@@ -278,7 +283,20 @@
     }, 2000);
     setTimeout(() => {
       messageEl.style.display = 'none';
-    }, 4000);
+    }, 3000);
+  }
+
+  function showAnswerMessage(expectedAnswer) {
+    const messageEl = document.getElementById('answerMessage');
+    messageEl.textContent = "Expected answer: " + expectedAnswer;
+    messageEl.style.display = 'block';
+    messageEl.style.opacity = '1';
+    setTimeout(() => {
+      messageEl.style.opacity = '0';
+    }, 2000);
+    setTimeout(() => {
+      messageEl.style.display = 'none';
+    }, 3000);
   }
 </script>
 

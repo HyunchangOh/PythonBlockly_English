@@ -412,6 +412,7 @@
 
 </div>
 <div id="correctMessage" class="correct-message">Correct!</div>
+<div id="answerMessage" class="correct-message"></div>
 </body>
 <script>
     const Confettiful = function(el) {
@@ -481,7 +482,7 @@
         showCorrectMessage();
     }
     else{
-         $("#output").html("This does not seem right. <br>Hint 1: Make a new variable at the beginning called ‘potion’ and set it to 2.<br>Hint 2: At the beginning of a loop, check if damage is larger than hp and if so, deduct 1 from potion by ‘potion = potion -1’ and reset the value of hp as 100.");
+        showAnswerMessage(choice1);
     }
   });
 
@@ -494,7 +495,20 @@
     }, 2000);
     setTimeout(() => {
       messageEl.style.display = 'none';
-    }, 4000); // Total duration to allow fade out to complete
+    }, 3000);
+  }
+
+  function showAnswerMessage(expectedAnswer) {
+    const messageEl = document.getElementById('answerMessage');
+    messageEl.textContent = "Expected answer: " + expectedAnswer;
+    messageEl.style.display = 'block';
+    messageEl.style.opacity = '1';
+    setTimeout(() => {
+      messageEl.style.opacity = '0';
+    }, 2000);
+    setTimeout(() => {
+      messageEl.style.display = 'none';
+    }, 3000);
   }
 </script>
 </html>

@@ -72,6 +72,7 @@
     
 </div>
 <div id="correctMessage" class="correct-message">Correct. Congratulations!</div>
+<div id="answerMessage" class="correct-message"></div>
 <script>
 	window.onload = () => {
 		let parentDiv = document.getElementById("blockmirror-editor");
@@ -306,6 +307,10 @@
         new Confettiful(container);
         showCorrectMessage();
     }
+    else{
+        const expectedAnswers = "Test 1: Very low priority\nTest 2: Low priority\nTest 3: Medium PriorityRecommended budget for nature conservation measures: 15000 EUR\nTest 4: Critical - Emergency PriorityRecommended budget for nature conservation measures: 100000 EUR";
+        showAnswerMessage(expectedAnswers);
+    }
   });
 
   function showCorrectMessage() {
@@ -317,7 +322,20 @@
     }, 2000);
     setTimeout(() => {
       messageEl.style.display = 'none';
-    }, 4000);
+    }, 3000);
+  }
+
+  function showAnswerMessage(expectedAnswer) {
+    const messageEl = document.getElementById('answerMessage');
+    messageEl.textContent = "Expected answers:\n" + expectedAnswer;
+    messageEl.style.display = 'block';
+    messageEl.style.opacity = '1';
+    setTimeout(() => {
+      messageEl.style.opacity = '0';
+    }, 2000);
+    setTimeout(() => {
+      messageEl.style.display = 'none';
+    }, 3000);
   }
 </script>
 

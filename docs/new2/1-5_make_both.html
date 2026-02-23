@@ -85,6 +85,7 @@
     
 </div>
 <div id="correctMessage" class="correct-message">Correct!</div>
+<div id="answerMessage" class="correct-message"></div>
 </body>
 
 
@@ -266,9 +267,13 @@
     console.log(a);
     var answer = 'I have read a book called "The Neverending Story".The author said that it is important to "believe in yourself".I find the quote \'Be yourself!\' very inspiring.Sometimes I think that "everything is possible" if you work hard.';
     console.log(answer);
-    if(a==answer){
+    const expectedAnswer = answer;
+    if(a==expectedAnswer){
         new Confettiful(container);
         showCorrectMessage();
+    }
+    else{
+        showAnswerMessage(expectedAnswer);
     }
   });
 
@@ -281,7 +286,20 @@
     }, 2000);
     setTimeout(() => {
       messageEl.style.display = 'none';
-    }, 4000);
+    }, 3000);
+  }
+
+  function showAnswerMessage(expectedAnswer) {
+    const messageEl = document.getElementById('answerMessage');
+    messageEl.textContent = "Expected answer: " + expectedAnswer;
+    messageEl.style.display = 'block';
+    messageEl.style.opacity = '1';
+    setTimeout(() => {
+      messageEl.style.opacity = '0';
+    }, 2000);
+    setTimeout(() => {
+      messageEl.style.display = 'none';
+    }, 3000);
   }
 </script>
 

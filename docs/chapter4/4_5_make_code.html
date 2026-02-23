@@ -412,6 +412,7 @@
 
 </div>
 <div id="correctMessage" class="correct-message">Correct!</div>
+<div id="answerMessage" class="correct-message"></div>
 </body>
 <script>
     const Confettiful = function(el) {
@@ -481,7 +482,7 @@
         showCorrectMessage();
     }
     else{
-         $("#output").html("This does not seem right. <br>Hint: Armour and Potion should not affect the damage variable as it should double each loop. You might want to use another variable 'real_damage' to calculate the damage to be applied to hp after being reduced by armour (when it breaks).");
+        showAnswerMessage(choice1);
     }
 
   });
@@ -495,7 +496,20 @@
     }, 2000);
     setTimeout(() => {
       messageEl.style.display = 'none';
-    }, 4000); // Total duration to allow fade out to complete
+    }, 3000);
+  }
+
+  function showAnswerMessage(expectedAnswer) {
+    const messageEl = document.getElementById('answerMessage');
+    messageEl.textContent = "Expected answer: " + expectedAnswer;
+    messageEl.style.display = 'block';
+    messageEl.style.opacity = '1';
+    setTimeout(() => {
+      messageEl.style.opacity = '0';
+    }, 2000);
+    setTimeout(() => {
+      messageEl.style.display = 'none';
+    }, 3000);
   }
 </script>
 </html>
