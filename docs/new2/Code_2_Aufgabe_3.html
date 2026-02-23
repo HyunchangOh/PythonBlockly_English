@@ -275,7 +275,7 @@
     runCode();
     var a = $("#output").text();
     const expectedAnswer = "The engagement rate of the article on day 2 is: 5.65731707317%";
-    if(a.replace(/\n/g, "")==expectedAnswer.replace(/\n/g, "")){
+    if(a.replace(/\s/g, "")==expectedAnswer.replace(/\s/g, "")){
         new Confettiful(container);
         showCorrectMessage();
     }

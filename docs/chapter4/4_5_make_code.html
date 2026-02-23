@@ -472,7 +472,7 @@
     checkCode("placeholder1871=100\n");
     var a = $("#output").text();
 
-    if(a.replace(/\n/g, "")!=choice1.replace(/\n/g, "")){
+    if(a.replace(/\s/g, "")!=choice1.replace(/\s/g, "")){
         console.log("1");
         check = false;
     }

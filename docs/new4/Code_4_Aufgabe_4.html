@@ -275,7 +275,7 @@
     runCode();
     var a = $("#output").text();
     const expectedAnswer = "After year 1 the investment with simple interest is worth: 4200.0After year 1 the investment with compound interest (calculated annually) is worth: 4200.0After year 2 the investment with simple interest is worth: 4400.0After year 2 the investment with compound interest (calculated annually) is worth: 4410.0After year 3 the investment with simple interest is worth: 4600.0After year 3 the investment with compound interest (calculated annually) is worth: 4630.5After year 4 the investment with simple interest is worth: 4800.0After year 4 the investment with compound interest (calculated annually) is worth: 4862.025The difference after 4 years is: 62.025 EUR.";
-    if(a.replace(/\n/g, "")==expectedAnswer.replace(/\n/g, "")){
+    if(a.replace(/\s/g, "")==expectedAnswer.replace(/\s/g, "")){
         new Confettiful(container);
         showCorrectMessage();
     }

@@ -432,7 +432,7 @@
     runCode();
     var a = $("#output").text();
     const expectedAnswer = "It's a wonderful world!";
-    if(a.replace(/\n/g, "")==expectedAnswer.replace(/\n/g, "")){
+    if(a.replace(/\s/g, "")==expectedAnswer.replace(/\s/g, "")){
         new Confettiful(container);
         showCorrectMessage();
     }

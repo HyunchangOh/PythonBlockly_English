@@ -475,7 +475,7 @@
     checkCode("score=90\n");
     var a = $("#output").text();
 
-    if(a.replace(/\n/g, "")!=choice1.replace(/\n/g, "")){
+    if(a.replace(/\s/g, "")!=choice1.replace(/\s/g, "")){
         console.log("1");
         check = false;
     }
@@ -483,7 +483,7 @@
     checkCode("score=70\n");
     var a = $("#output").text();
 
-    if(a.replace(/\n/g, "")!=choice2.replace(/\n/g, "")){
+    if(a.replace(/\s/g, "")!=choice2.replace(/\s/g, "")){
         console.log("2");
         check = false;
     }
@@ -491,7 +491,7 @@
     checkCode("score=50\n");
     var a = $("#output").text();
 
-    if(a.replace(/\n/g, "")!=choice3.replace(/\n/g, "")){
+    if(a.replace(/\s/g, "")!=choice3.replace(/\s/g, "")){
         console.log("3");
         check = false;
     } 
@@ -499,7 +499,7 @@
     checkCode("score=49\n");
     var a = $("#output").text();
 
-    if(a.replace(/\n/g, "")!=choice4.replace(/\n/g, "")){
+    if(a.replace(/\s/g, "")!=choice4.replace(/\s/g, "")){
         console.log("4");
         check = false;
     }

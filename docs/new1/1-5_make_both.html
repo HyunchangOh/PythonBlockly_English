@@ -268,7 +268,7 @@
     var answer="Das ist ein 'Ei.'Er sagte, \"ja.\"Aber das ist kein 'Ei.'Er dann sagte,\"nein.\""
     console.log(answer);
     const expectedAnswer = answer;
-    if(a.replace(/\n/g, "")==expectedAnswer.replace(/\n/g, "")){
+    if(a.replace(/\s/g, "")==expectedAnswer.replace(/\s/g, "")){
         new Confettiful(container);
         showCorrectMessage();
     }

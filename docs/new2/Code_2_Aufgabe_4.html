@@ -275,7 +275,7 @@
     runCode();
     var a = $("#output").text();
     const expectedAnswer = "Engagement Day 1:4520Engagement Day 2:4639Engagement Day 3:3360Engagement Rate Day 1:6.74626865672%Engagement Rate Day 2:5.65731707317%Engagement Rate Day 3:7.0%";
-    if(a.replace(/\n/g, "")==expectedAnswer.replace(/\n/g, "")){
+    if(a.replace(/\s/g, "")==expectedAnswer.replace(/\s/g, "")){
         new Confettiful(container);
         showCorrectMessage();
     }

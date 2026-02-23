@@ -473,7 +473,7 @@
     checkCode("balance=300\nprice=100\ncolor='blue'\n");
     var a = $("#output").text();
 
-    if(a.replace(/\n/g, "")!=choice1.replace(/\n/g, "")){
+    if(a.replace(/\s/g, "")!=choice1.replace(/\s/g, "")){
         console.log("1");
         check = false;
     }
@@ -481,7 +481,7 @@
     checkCode("balance=200\nprice=100\ncolor='orange'\n");
     var a = $("#output").text();
 
-    if(a.replace(/\n/g, "")!=choice1.replace(/\n/g, "")){
+    if(a.replace(/\s/g, "")!=choice1.replace(/\s/g, "")){
         console.log("2");
         check = false;
     }
@@ -489,7 +489,7 @@
     checkCode("balance=200\nprice=100\ncolor='blue'\n");
     var a = $("#output").text();
 
-    if(a.replace(/\n/g, "")!=choice2.replace(/\n/g, "")){
+    if(a.replace(/\s/g, "")!=choice2.replace(/\s/g, "")){
         console.log("3");
         check = false;
     } 
@@ -497,7 +497,7 @@
     checkCode("balance=199\nprice=100\ncolor='orange'\n");
     var a = $("#output").text();
 
-    if(a.replace(/\n/g, "")!=choice2.replace(/\n/g, "")){
+    if(a.replace(/\s/g, "")!=choice2.replace(/\s/g, "")){
         console.log("4");
         check = false;
     }

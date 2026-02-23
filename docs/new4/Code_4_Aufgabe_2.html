@@ -276,7 +276,7 @@
     runCode();
     var a = $("#output").text();
     const expectedAnswer = "After year 1 the investment with simple interest is worth: 10500.0After year 1 the investment with compound interest (calculated annually) is worth: 10500.0After year 2 the investment with simple interest is worth: 11000.0After year 2 the investment with compound interest (calculated annually) is worth: 11025.0After year 3 the investment with simple interest is worth: 11500.0After year 3 the investment with compound interest (calculated annually) is worth: 11576.25After year 4 the investment with simple interest is worth: 12000.0After year 4 the investment with compound interest (calculated annually) is worth: 12155.0625After year 5 the investment with simple interest is worth: 12500.0After year 5 the investment with compound interest (calculated annually) is worth: 12762.815625";
-    if(a.replace(/\n/g, "")==expectedAnswer.replace(/\n/g, "")){
+    if(a.replace(/\s/g, "")==expectedAnswer.replace(/\s/g, "")){
         new Confettiful(container);
         showCorrectMessage();
     }

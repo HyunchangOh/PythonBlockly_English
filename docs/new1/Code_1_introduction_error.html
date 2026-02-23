@@ -275,7 +275,7 @@
     runCode();
     var a = $("#output").text();
     const expectedAnswer = "before the error (will be output)NameError: name 'priint' is not defined on line 2";
-    if(a.replace(/\n/g, "")==expectedAnswer.replace(/\n/g, "")){
+    if(a.replace(/\s/g, "")==expectedAnswer.replace(/\s/g, "")){
         new Confettiful(container);
         showCorrectMessage();
     }

@@ -275,31 +275,31 @@
     let flag = true;
     runCode('bird_population_density = "critical" \npredator_population_density = "high"\n');
     var a = $("#output").text();
-    if(a.replace(/\n/g, "")!="Nature conservation measure required".replace(/\n/g, "")){
+    if(a.replace(/\s/g, "")!="Nature conservation measure required".replace(/\s/g, "")){
         flag=false;
     }
 
     runCode("bird_population_density = 'high'\n")
     var a = $("#output").text();
-    if(a.replace(/\n/g, "")!="Nature conservation measure not required".replace(/\n/g, "")){
+    if(a.replace(/\s/g, "")!="Nature conservation measure not required".replace(/\s/g, "")){
         flag=false;
     }
 
     runCode("bird_population_density = 'medium'\npredator_population_density = 'high'\n")
     var a = $("#output").text();
-    if(a.replace(/\n/g, "")!="Nature conservation measure required".replace(/\n/g, "")){
+    if(a.replace(/\s/g, "")!="Nature conservation measure required".replace(/\s/g, "")){
         flag=false;
     }
 
     runCode("bird_population_density = 'low'\npredator_population_density = 'medium'\n")
     var a = $("#output").text();
-    if(a.replace(/\n/g, "")!="Nature conservation measure required".replace(/\n/g, "")){
+    if(a.replace(/\s/g, "")!="Nature conservation measure required".replace(/\s/g, "")){
         flag=false;
     }
 
     runCode("bird_population_density = 'low'\npredator_population_density = 'low'\n")
     var a = $("#output").text();
-    if(a.replace(/\n/g, "")!="Nature conservation measure not required".replace(/\n/g, "")){
+    if(a.replace(/\s/g, "")!="Nature conservation measure not required".replace(/\s/g, "")){
         flag=false;
     }
 

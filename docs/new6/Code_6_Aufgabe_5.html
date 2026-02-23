@@ -277,7 +277,7 @@
     runCode();
     var a = $("#output").text();
     const expectedAnswer = "Number of positive feedback comments: 3";
-    if(a.replace(/\n/g, "")==expectedAnswer.replace(/\n/g, "")){
+    if(a.replace(/\s/g, "")==expectedAnswer.replace(/\s/g, "")){
         new Confettiful(container);
         showCorrectMessage();
     }

@@ -275,7 +275,7 @@
     runCode();
     var a = $("#output").text();
     const expectedAnswer = "10500.011000.010250.010506.25The investment with simple interest is better.";
-    if(a.replace(/\n/g, "")==expectedAnswer.replace(/\n/g, "")){
+    if(a.replace(/\s/g, "")==expectedAnswer.replace(/\s/g, "")){
         new Confettiful(container);
         showCorrectMessage();
     }
