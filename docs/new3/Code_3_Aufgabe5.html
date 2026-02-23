@@ -153,7 +153,7 @@
             }
         });
 
-        Sk.misceval.asyncToPromise(function() {
+        return Sk.misceval.asyncToPromise(function() {
             return Sk.importMainWithBody("<stdin>", false, code, true);
         }).catch(function(err) {
             outputElement.innerText += err.toString();
@@ -270,36 +270,71 @@
     }, 25);
   };
   
-  document.getElementById('submit').addEventListener('click', function() {
+  document.getElementById('submit').addEventListener('click', async function() {
     const container = document.querySelector('.js-container');
     let flag = true;
-    runCode('bird_population_density = "critical" \npredator_population_density = "high"\n');
+    await runCode('bird_population_density = "critical" \npredator_population_density = "high"\n');
+    await new Promise(resolve => setTimeout(resolve, 100));
     var a = $("#output").text();
-    if(a.replace(/\s/g, "")!="Nature conservation measure required".replace(/\s/g, "")){
+    var expected1 = "Conservation measure required";
+    console.log("Test 1 - Raw output:", JSON.stringify(a));
+    console.log("Test 1 - Expected:", JSON.stringify(expected1));
+    console.log("Test 1 - Normalized output:", JSON.stringify(a.replace(/\s/g, "")));
+    console.log("Test 1 - Normalized expected:", JSON.stringify(expected1.replace(/\s/g, "")));
+    console.log("Test 1 - Match:", a.replace(/\s/g, "") === expected1.replace(/\s/g, ""));
+    if(a.replace(/\s/g, "")!=expected1.replace(/\s/g, "")){
         flag=false;
     }
 
-    runCode("bird_population_density = 'high'\n")
+    await runCode("bird_population_density = 'high'\n")
+    await new Promise(resolve => setTimeout(resolve, 100));
     var a = $("#output").text();
-    if(a.replace(/\s/g, "")!="Nature conservation measure not required".replace(/\s/g, "")){
+    var expected2 = "Conservation measure not required";
+    console.log("Test 2 - Raw output:", JSON.stringify(a));
+    console.log("Test 2 - Expected:", JSON.stringify(expected2));
+    console.log("Test 2 - Normalized output:", JSON.stringify(a.replace(/\s/g, "")));
+    console.log("Test 2 - Normalized expected:", JSON.stringify(expected2.replace(/\s/g, "")));
+    console.log("Test 2 - Match:", a.replace(/\s/g, "") === expected2.replace(/\s/g, ""));
+    if(a.replace(/\s/g, "")!=expected2.replace(/\s/g, "")){
         flag=false;
     }
 
-    runCode("bird_population_density = 'medium'\npredator_population_density = 'high'\n")
+    await runCode("bird_population_density = 'medium'\npredator_population_density = 'high'\n")
+    await new Promise(resolve => setTimeout(resolve, 100));
     var a = $("#output").text();
-    if(a.replace(/\s/g, "")!="Nature conservation measure required".replace(/\s/g, "")){
+    var expected3 = "Conservation measure required";
+    console.log("Test 3 - Raw output:", JSON.stringify(a));
+    console.log("Test 3 - Expected:", JSON.stringify(expected3));
+    console.log("Test 3 - Normalized output:", JSON.stringify(a.replace(/\s/g, "")));
+    console.log("Test 3 - Normalized expected:", JSON.stringify(expected3.replace(/\s/g, "")));
+    console.log("Test 3 - Match:", a.replace(/\s/g, "") === expected3.replace(/\s/g, ""));
+    if(a.replace(/\s/g, "")!=expected3.replace(/\s/g, "")){
         flag=false;
     }
 
-    runCode("bird_population_density = 'low'\npredator_population_density = 'medium'\n")
+    await runCode("bird_population_density = 'low'\npredator_population_density = 'medium'\n")
+    await new Promise(resolve => setTimeout(resolve, 100));
     var a = $("#output").text();
-    if(a.replace(/\s/g, "")!="Nature conservation measure required".replace(/\s/g, "")){
+    var expected4 = "Conservation measure required";
+    console.log("Test 4 - Raw output:", JSON.stringify(a));
+    console.log("Test 4 - Expected:", JSON.stringify(expected4));
+    console.log("Test 4 - Normalized output:", JSON.stringify(a.replace(/\s/g, "")));
+    console.log("Test 4 - Normalized expected:", JSON.stringify(expected4.replace(/\s/g, "")));
+    console.log("Test 4 - Match:", a.replace(/\s/g, "") === expected4.replace(/\s/g, ""));
+    if(a.replace(/\s/g, "")!=expected4.replace(/\s/g, "")){
         flag=false;
     }
 
-    runCode("bird_population_density = 'low'\npredator_population_density = 'low'\n")
+    await runCode("bird_population_density = 'low'\npredator_population_density = 'low'\n")
+    await new Promise(resolve => setTimeout(resolve, 100));
     var a = $("#output").text();
-    if(a.replace(/\s/g, "")!="Nature conservation measure not required".replace(/\s/g, "")){
+    var expected5 = "Conservation measure not required";
+    console.log("Test 5 - Raw output:", JSON.stringify(a));
+    console.log("Test 5 - Expected:", JSON.stringify(expected5));
+    console.log("Test 5 - Normalized output:", JSON.stringify(a.replace(/\s/g, "")));
+    console.log("Test 5 - Normalized expected:", JSON.stringify(expected5.replace(/\s/g, "")));
+    console.log("Test 5 - Match:", a.replace(/\s/g, "") === expected5.replace(/\s/g, ""));
+    if(a.replace(/\s/g, "")!=expected5.replace(/\s/g, "")){
         flag=false;
     }
 
@@ -308,7 +343,7 @@
         showCorrectMessage();
     }
     else{
-        const expectedAnswers = "Test 1: Nature conservation measure required\nTest 2: Nature conservation measure not required\nTest 3: Nature conservation measure required\nTest 4: Nature conservation measure required\nTest 5: Nature conservation measure not required";
+        const expectedAnswers = "Test 1: Conservation measure required\nTest 2: Conservation measure not required\nTest 3: Conservation measure required\nTest 4: Conservation measure required\nTest 5: Conservation measure not required";
         showAnswerMessage(expectedAnswers);
     }
   });

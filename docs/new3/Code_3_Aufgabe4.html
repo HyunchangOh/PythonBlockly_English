@@ -138,11 +138,13 @@
         });
 
         const code = combinedText;
-        console.log(code);
+        console.log("=== Executing code ===");
+        console.log("Full code to execute:", JSON.stringify(code));
         outputElement.innerText = "";
         // console.log(code);
         Sk.configure({
             output: function(text) {
+                console.log("Output received:", JSON.stringify(text));
                 outputElement.innerText += text;
             },
             read: function(x) {
@@ -153,9 +155,13 @@
             }
         });
 
-        Sk.misceval.asyncToPromise(function() {
+        return Sk.misceval.asyncToPromise(function() {
             return Sk.importMainWithBody("<stdin>", false, code, true);
+        }).then(function() {
+            console.log("Code execution completed successfully");
+            console.log("Final output element text:", JSON.stringify(outputElement.innerText));
         }).catch(function(err) {
+            console.error("Code execution error:", err);
             outputElement.innerText += err.toString();
         });
     }
@@ -270,36 +276,78 @@
     }, 25);
   };
   
-  document.getElementById('submit').addEventListener('click', function() {
+  document.getElementById('submit').addEventListener('click', async function() {
     const container = document.querySelector('.js-container');
     let flag = true;
-    runCode("bird_population_density=1100\n");
+    await runCode("bird_population_density=1100\n");
+    await new Promise(resolve => setTimeout(resolve, 100));
     var a = $("#output").text();
-    if(a.replace(/\s/g, "")!="Very low priority".replace(/\s/g, "")){
+    var expected1 = "Very low priority";
+    console.log("Test 1 - Output element innerText:", JSON.stringify(document.getElementById("output").innerText));
+    console.log("Test 1 - Raw output:", JSON.stringify(a));
+    console.log("Test 1 - Expected:", JSON.stringify(expected1));
+    console.log("Test 1 - Normalized output:", JSON.stringify(a.replace(/\s/g, "")));
+    console.log("Test 1 - Normalized expected:", JSON.stringify(expected1.replace(/\s/g, "")));
+    console.log("Test 1 - Match:", a.replace(/\s/g, "") === expected1.replace(/\s/g, ""));
+    if(a.replace(/\s/g, "")!=expected1.replace(/\s/g, "")){
         flag=false;
     }
 
-    runCode("bird_population_density=400\n")
+    await runCode("bird_population_density=400\n")
+    await new Promise(resolve => setTimeout(resolve, 100));
     var a = $("#output").text();
-    if(a.replace(/\s/g, "")!="Low priority".replace(/\s/g, "")){
+    var expected2 = "Low priority";
+    console.log("Test 2 - Output element innerText:", JSON.stringify(document.getElementById("output").innerText));
+    console.log("Test 2 - Raw output:", JSON.stringify(a));
+    console.log("Test 2 - Expected:", JSON.stringify(expected2));
+    console.log("Test 2 - Normalized output:", JSON.stringify(a.replace(/\s/g, "")));
+    console.log("Test 2 - Normalized expected:", JSON.stringify(expected2.replace(/\s/g, "")));
+    console.log("Test 2 - Match:", a.replace(/\s/g, "") === expected2.replace(/\s/g, ""));
+    if(a.replace(/\s/g, "")!=expected2.replace(/\s/g, "")){
         flag=false;
     }
 
-    runCode("bird_population_density=101\n")
+    await runCode("bird_population_density=101\n")
+    await new Promise(resolve => setTimeout(resolve, 100));
     var a = $("#output").text();
-    if(a.replace(/\s/g, "")!="Medium PriorityRecommended budget for nature conservation measures: 15000 EUR".replace(/\s/g, "")){
+    var expected3 = "Medium priorityRecommended budget for nature conservation measures: 15000 EUR";
+    console.log("Test 3 - Output element innerText:", JSON.stringify(document.getElementById("output").innerText));
+    console.log("Test 3 - Raw output:", JSON.stringify(a));
+    console.log("Test 3 - Expected:", JSON.stringify(expected3));
+    console.log("Test 3 - Normalized output:", JSON.stringify(a.replace(/\s/g, "")));
+    console.log("Test 3 - Normalized expected:", JSON.stringify(expected3.replace(/\s/g, "")));
+    console.log("Test 3 - Match:", a.replace(/\s/g, "") === expected3.replace(/\s/g, ""));
+    if(a.replace(/\s/g, "")!=expected3.replace(/\s/g, "")){
         flag=false;
     }
 
-    runCode("bird_population_density=100\n")
+    await runCode("bird_population_density=100\n")
+    await new Promise(resolve => setTimeout(resolve, 100));
     var a = $("#output").text();
-    if(a.replace(/\s/g, "")!="High PriorityRecommended budget for nature conservation measures: 40000 EUR".replace(/\s/g, "")){
+    var expected4 = "High priorityRecommended budget for nature conservation measures: 40000 EUR";
+    console.log("Test 4 - Output element innerText:", JSON.stringify(document.getElementById("output").innerText));
+    console.log("Test 4 - Raw output:", JSON.stringify(a));
+    console.log("Test 4 - Expected:", JSON.stringify(expected4));
+    console.log("Test 4 - Normalized output:", JSON.stringify(a.replace(/\s/g, "")));
+    console.log("Test 4 - Normalized expected:", JSON.stringify(expected4.replace(/\s/g, "")));
+    console.log("Test 4 - Match:", a.replace(/\s/g, "") === expected4.replace(/\s/g, ""));
+    if(a.replace(/\s/g, "")!=expected4.replace(/\s/g, "")){
         flag=false;
     }
 
-    runCode("bird_population_density=1\n")
+    await runCode("bird_population_density=1\n")
+    // Small delay to ensure output is captured
+    await new Promise(resolve => setTimeout(resolve, 100));
     var a = $("#output").text();
-    if(a.replace(/\s/g, "")!="Critical - Emergency PriorityRecommended budget for nature conservation measures: 100000 EUR".replace(/\s/g, "")){
+    var expected5 = "Critical - Emergency priorityRecommended budget for nature conservation measures: 100000 EUR";
+    console.log("Test 5 - Output element innerText:", JSON.stringify(document.getElementById("output").innerText));
+    console.log("Test 5 - Output element text (jQuery):", JSON.stringify($("#output").text()));
+    console.log("Test 5 - Raw output:", JSON.stringify(a));
+    console.log("Test 5 - Expected:", JSON.stringify(expected5));
+    console.log("Test 5 - Normalized output:", JSON.stringify(a.replace(/\s/g, "")));
+    console.log("Test 5 - Normalized expected:", JSON.stringify(expected5.replace(/\s/g, "")));
+    console.log("Test 5 - Match:", a.replace(/\s/g, "") === expected5.replace(/\s/g, ""));
+    if(a.replace(/\s/g, "")!=expected5.replace(/\s/g, "")){
         flag=false;
     }
 
@@ -308,7 +356,7 @@
         showCorrectMessage();
     }
     else{
-        const expectedAnswers = "Test 1: Very low priority\nTest 2: Low priority\nTest 3: Medium PriorityRecommended budget for nature conservation measures: 15000 EUR\nTest 4: High PriorityRecommended budget for nature conservation measures: 40000 EUR\nTest 5: Critical - Emergency PriorityRecommended budget for nature conservation measures: 100000 EUR";
+        const expectedAnswers = "Test 1: Very low priority\nTest 2: Low priority\nTest 3: Medium priorityRecommended budget for nature conservation measures: 15000 EUR\nTest 4: High priorityRecommended budget for nature conservation measures: 40000 EUR\nTest 5: Critical - Emergency priorityRecommended budget for nature conservation measures: 100000 EUR";
         showAnswerMessage(expectedAnswers);
     }
   });
