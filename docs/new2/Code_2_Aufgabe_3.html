@@ -194,7 +194,7 @@
         console.log('Change! Better save:', event)
     });
 
-    editor.setCode('engagement_day2 = 4639\nview_count_day2 = 82000\nengagement_rate_day2 = (engagement_day2) * 100\noutput_message = ("The engagement rate of the article on Day 2 is: " + str(engagement_rate_day2) + "%")\nprint(output_message)');
+    editor.setCode('engagement_day2 = 4639\nview_count_day2 = 82000\nengagement_rate_day2 = (engagement_day2) * 100\noutput_message = ("The engagement rate of the article on day 2 is: " + str(engagement_rate_day2) + "%")\nprint(output_message)');
     // editor.setCode('print("Die Frage ist nicht, ob Maschinen denken, sondern ob Menschen es tun.")\n')
 
     Sk.configure({
@@ -273,7 +273,7 @@
     const container = document.querySelector('.js-container');
     runCode();
     var a = $("#output").text();
-    if(a=="The engagement rate of the article on Day 2 is: 5.65731707317%"){
+    if(a=="The engagement rate of the article on day 2 is: 5.65731707317%"){
         new Confettiful(container);
         showCorrectMessage();
     }
