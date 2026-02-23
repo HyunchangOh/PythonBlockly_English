@@ -194,7 +194,7 @@
         console.log('Change! Better save:', event)
     });
 
-    editor.setCode('#Ich bin ein Kommentar\nprint("Ich bin ein Code")#Ich bin noch ein Kommentar');
+    editor.setCode('#I am a comment\nprint("I am code")#I am another comment');
     // editor.setCode('print("Die Frage ist nicht, ob Maschinen denken, sondern ob Menschen es tun.")\n')
 
     Sk.configure({
@@ -273,7 +273,7 @@
     const container = document.querySelector('.js-container');
     runCode();
     var a = $("#output").text();
-    if(a=="Ich bin ein Code"){
+    if(a=="I am code"){
         new Confettiful(container);
         showCorrectMessage();
     }
