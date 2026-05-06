@@ -274,7 +274,7 @@
     const container = document.querySelector('.js-container');
     runCode();
     var a = $("#output").text();
-    const expectedAnswer = "MicroLowSlightStrongSevere";
+    const expectedAnswer = "MicroLowSlightStrongVery Severe";
     if(a.replace(/\s/g, "")==expectedAnswer.replace(/\s/g, "")){
         new Confettiful(container);
         showCorrectMessage();
